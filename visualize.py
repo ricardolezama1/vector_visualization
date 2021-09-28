@@ -20,8 +20,14 @@ plt.style.use('ggplot')
 
 
 
-
 def normalize_corpus(raw_corpus):
+    """
+    This function reads in presumably somewhat clean. 
+    
+    Argument: a file path that contains a well formed txt file.
+    
+    Returns: This returns a 'list of lists' format friendly to Gensim. 
+    """
     raw_corpus = open(raw_corpus,'r', encoding='utf-8').read().splitlines()
     #This is the simple way to remove stop words
     important_words=[]
@@ -30,7 +36,7 @@ def normalize_corpus(raw_corpus):
         if sentences not in stopwords.words('spanish'):
             a_words = re.findall(r'\w+', sentences) 
             for a in a_words:
-                sentence.append(a)
+                sentence.append(a.lower())
         important_words.append(sentence)
     return important_words
 
