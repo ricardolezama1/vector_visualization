@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 """
 Created on Thu Sep 23 00:39:02 2021
-
 @author: Ricardo Lezama
 """
 
@@ -19,7 +18,7 @@ import matplotlib.pyplot as plt
 
 plt.style.use('ggplot')
 
-raw_corpus = open('C:/<XYZ>/corpora/todomexico.txt','r', encoding='utf-8').read().splitlines()
+
 
 
 def normalize_corpus(raw_corpus):
@@ -61,7 +60,7 @@ def scatter_vector(model, word, size, topn):
     return close_words
     
 
-important_text = normalize_corpus('C:/<XYZ>/corpora/todomexico.txt')
+important_text = normalize_corpus('C:/<<ZYZ>>/NER_news-main/corpora/todomexico.txt')
 
 #Build the model, by selecting the parameters.
 our_model = Word2Vec(important_text, vector_size=100, window=5, min_count=2, workers=20)
@@ -69,5 +68,4 @@ our_model = Word2Vec(important_text, vector_size=100, window=5, min_count=2, wor
 our_model.save("Mex_Corona_.w2v")
 #Inspect the model by looking for the most similar words for a test word.
 #print(our_model.wv.most_similar('mujeres', topn=5))
-display_closestwords_tsnescatterplot(our_model, 'Sputnik', 100, 21) 
-
+scatter_vector(our_model, 'Pfizer', 100, 21) 
