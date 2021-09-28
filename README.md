@@ -1,5 +1,6 @@
 # vector_visualization
-Gensim based vector visualization
+
+Gensim based vector visualization. The modules here are intended to format corpora into a GENSIM-friendly format. Additionally, the corpora expected is in Spanish.  
 
 # Normalize Corpora
 
