@@ -19,7 +19,6 @@ import matplotlib.pyplot as plt
 plt.style.use('ggplot')
 
 
-
 def normalize_corpus(raw_corpus):
     """
     This function reads in presumably somewhat clean. 
@@ -33,13 +32,12 @@ def normalize_corpus(raw_corpus):
     important_words=[]
     for sentences in raw_corpus:
         sentence = [] 
-        if sentences not in stopwords.words('spanish'):
-            a_words = re.findall(r'\w+', sentences) 
-            for a in a_words:
+        a_words = re.findall(r'[A-Z,a-z,\-,0-9]+', sentences) 
+        for a in a_words:
+            if a not in stopwords.words('spanish') and ',' not in a:
                 sentence.append(a.lower())
         important_words.append(sentence)
     return important_words
-
 # Review words in an N dimensional vector space. 
 
 def scatter_vector(model, word, size, topn):
