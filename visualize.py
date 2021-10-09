@@ -40,13 +40,23 @@ def normalize_corpus(raw_corpus):
     return important_words
 # Review words in an N dimensional vector space. 
 
-def scatter_vector(model, word, size, topn):
+
+
+def scatter_vector(model, palabra, size, topn):
     
+    """ This scatter plot for vectors allows for quick visualization of similar terms. 
+    
+    Argument: a model containing vector representations of the Spanish MX content. word
+    is the content you're looking for in the corpus.
+    
+    Return: close words as a print out. This also yields a plt.show() to visualize vectos in Anaconda.
+    """
+   
     arr = np.empty((0,size), dtype='f')
-    word_labels = [word]
-    close_words = model.wv.similar_by_word(word, topn=topn)
-    arr = np.append(arr, np.array([model.wv[word]]), axis=0)
-    for wrd_score in close_words:
+    word_labels = [palabra]
+    palabras_cercanas = model.wv.similar_by_word(palabra, topn=topn)
+    arr = np.append(arr, np.array([model.wv[palabra]]), axis=0)
+    for wrd_score in palabras_cercanas:
         wrd_vector = model.wv[wrd_score[0]]
         word_labels.append(wrd_score[0])
         arr = np.append(arr, np.array([wrd_vector]), axis=0)
@@ -61,8 +71,7 @@ def scatter_vector(model, word, size, topn):
     plt.xlim(x_coords.min()+0.00005, x_coords.max()+0.00005)
     plt.ylim(y_coords.min()+0.00005, y_coords.max()+0.00005)
     plt.show()
-    return close_words
-    
+    return palabras_cercanas    
 
 important_text = normalize_corpus('C:/<<ZYZ>>/NER_news-main/corpora/todomexico.txt')
 
