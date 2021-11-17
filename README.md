@@ -1,3 +1,20 @@
+# To Use
+
+
+
+``` python 
+
+important_text = normalize_corpus('C:/<<ZYZ>>/NER_news-main/corpora/todomexico.txt')
+
+#Build the model, by selecting the parameters.
+our_model = Word2Vec(important_text, vector_size=100, window=5, min_count=2, workers=20)
+#Save the model
+our_model.save("Mex_Corona_.w2v")
+#Inspect the model by looking for the most similar words for a test word.
+#print(our_model.wv.most_similar('mujeres', topn=5))
+scatter_vector(our_model, 'Pfizer', 100, 21) 
+```
+
 # vector_visualization
 
 Gensim based vector visualization. The modules here are intended to format corpora into a GENSIM-friendly format. Additionally, the corpora expected is in Spanish.  
